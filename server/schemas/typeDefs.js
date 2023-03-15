@@ -39,10 +39,9 @@ const typeDefs = gql`
         image:String,
         bookId:String!,
         description:String!,
-        authors:[String]): Profile
-        ):User
+        authors:[String]:Book
    
-    removeBook(bookId: ID!, skill: String!): User
+    removeBook(userId:ID!, bookId: ID!): Book
   }
 `;
 
