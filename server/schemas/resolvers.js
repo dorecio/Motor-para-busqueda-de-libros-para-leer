@@ -4,9 +4,7 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-       // getSingleUser: async (parent, { userId }) => {
-      //      return User.findOne({ _id: userId });
-     //   },
+
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id });
@@ -41,7 +39,7 @@ const resolvers = {
                 return User.findOneAndUpdate(
                     { _id: args._Id },
                     {
-                        $addToSet: { authors: args.authors },
+                        $addToSet: { authors: args.info },
                     },
                     {
                         new: true,
@@ -61,7 +59,7 @@ const resolvers = {
                 );
             }
             throw new AuthenticationError('Necesitas hacer login!');
-        };
+        }
     }
 }
 module.exports = resolvers;
